@@ -3,21 +3,23 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Currency Converter</title>
+    <link rel="icon" href="/static/icon.png" type="image/x-icon" />
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <body>
 <div class="container d-flex justify-content-center align-items-center h-100">
-    <div class="card">
-        <div class="card-header">
+    <div class="card bg">
+        <div class="card-header d-flex align-items-center justify-content-center flex-column">
             <h2 class="card-title">Convert currency</h2>
             <p class="card-text">Enter the amount you want to convert.</p>
         </div>
         <div class="card-body">
             <form id="conversionForm" action="/convert" method="post" class="needs-validation" novalidate>
-                <div class="mb-3">
+                <div class="mb-3 ">
                     <label for="base" class="form-label">Base currency</label>
                     <select id="base" name="fromCurrency" class="form-select">
                         <option th:each="currency : ${currencies}" th:value="${currency}" th:text="${currency}"></option>
@@ -40,14 +42,51 @@
                     <label for="converted" class="form-label">Converted amount</label>
                     <input id="converted" name="converted" type="text" class="form-control" th:value="${result}" readonly>
                 </div>
-                <button type="submit" class="btn btn-primary">Convert</button>
+                <div class="boton">
+                    <button type="submit" class="btn btn-primary"><i class="bi bi-currency-dollar"></i>Convert</button>
+                </div>
+
             </form>
         </div>
     </div>
 </div>
 <style>
-    body{
-    height:100vh
+   body {
+        height: 100vh;
+        background-image: url('https://t3.ftcdn.net/jpg/04/34/58/54/240_F_434585463_zpdtTpTEbqQFfsp6RVEW6IIxEM9dHf86.jpg');
+        /* Esto ajusta la imagen para cubrir todo el body */
+        background-size: cover;
+        /* Esto centra la imagen */
+        background-position: center;
+    }
+    .card-footer img {
+        max-width: 5%;
+        max-height: 5%;
+    }
+    .bg {
+        font-style: oblique;
+        font-size: larger;
+        font-weight: bold;
+        color: aliceblue;
+        background: rgba(36, 94, 164, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(2.5px);
+        -webkit-backdrop-filter: blur(2.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .form-select {
+    font-style: italic;
+    }
+    .form-control {
+    font-style: oblique;
+    }
+    .boton{
+    display: flex;
+     justify-content: center;
+    }
+    .btn-primary {
+    width: 100%;
     }
 </style>
 <script>
