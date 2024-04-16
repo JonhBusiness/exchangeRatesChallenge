@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currency Converter</title>
+
+</head>
+<!-- Tailwind CSS config -->
+<script src="https://cdn.tailwindcss.com/3.3.0"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          fontFamily: {
+            sans: ["Roboto", "sans-serif"],
+            body: ["Roboto", "sans-serif"],
+            mono: ["ui-monospace", "monospace"],
+          },
+        },
+        corePlugins: {
+          preflight: false,
+        },
+      };
+    </script>
+<body>
+<div class="w-full max-w-lg bg-white shadow-md rounded-lg overflow-hidden">
+  <div class="p-4">
+    <h2 class="text-xl font-semibold">Convert currency</h2>
+    <p class="text-sm text-gray-600 mt-1">Enter the amount you want to convert.</p>
+  </div>
+  <div class="p-4 space-y-4">
+    <div class="space-y-2">
+      <label for="base" class="block text-sm font-medium text-gray-700">Base currency</label>
+      <div class="relative">
+        <select id="base" aria-label="Base currency" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option value="" disabled selected>Select a currency</option>
+          <option value="AUD">AUD - Australian Dollar</option>
+          <option value="BRL">BRL - Brazilian Real</option>
+          <option value="CAD">CAD - Canadian Dollar</option>
+          <option value="CNY">CNY - Chinese Yuan</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+          <option value="USD">USD - US Dollar</option>
+        </select>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
+      <input id="amount" type="number" class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div class="space-y-2">
+      <label for="target" class="block text-sm font-medium text-gray-700">Target currency</label>
+      <div class="relative">
+        <select id="target" aria-label="Target currency" class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <option value="" disabled selected>Select a currency</option>
+          <option value="AUD">AUD - Australian Dollar</option>
+          <option value="BRL">BRL - Brazilian Real</option>
+          <option value="CAD">CAD - Canadian Dollar</option>
+          <option value="CNY">CNY - Chinese Yuan</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+          <option value="USD">USD - US Dollar</option>
+        </select>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <label for="converted" class="block text-sm font-medium text-gray-700">Converted amount</label>
+      <input id="converted" type="text" readonly class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+  </div>
+  <div class="p-4">
+    <button type="submit" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Convert</button>
+  </div>
+</div>
+
+</body>
+</html>
+

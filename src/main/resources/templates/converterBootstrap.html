@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Currency Converter</title>
+</head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<body>
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Convert currency</h2>
+            <p class="card-text">Enter the amount you want to convert.</p>
+        </div>
+        <div class="card-body">
+            <form id="conversionForm" action="/convert" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="base" class="form-label">Base currency</label>
+                    <select id="base" name="fromCurrency" class="form-select">
+                        <option th:each="currency : ${currencies}" th:value="${currency}" th:text="${currency}"></option>
+                    </select>
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="amount" class="form-label">Amount</label>
+                    <input id="amount" name="amount" type="number" class="form-control" placeholder="Enter the amount" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid amount.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="target" class="form-label">Target currency</label>
+                    <select id="target" name="toCurrency" class="form-select">
+                        <option th:each="currency : ${currencies}" th:value="${currency}" th:text="${currency}"></option>
+                    </select>
+                </div>
+                <div class="mb-3" th:if="${result}">
+                    <label for="converted" class="form-label">Converted amount</label>
+                    <input id="converted" name="converted" type="text" class="form-control" th:value="${result}" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary">Convert</button>
+            </form>
+        </div>
+    </div>
+</div>
+<style>
+    body{
+    height:100vh
+    }
+</style>
+<script>
+(function () {
+  'use strict'
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
+</body>
+</html>
