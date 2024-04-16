@@ -66,6 +66,13 @@
         form.classList.add('was-validated')
       }, false)
     })
+
+  // Prevent negative numbers in amount field
+  document.getElementById('amount').addEventListener('input', function(event) {
+    if (this.value < 0) {
+      this.value = '';
+    }
+  });
 })()
 </script>
 
